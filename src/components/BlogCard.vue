@@ -8,13 +8,13 @@
         <Delete class="delete" />
       </div>
     </div>
-    <img :src="post.blogCoverPhoto" alt="" />
+  
     <div class="info">
-      <h4>{{ post.blogTitle }}</h4>
-      <p>{{post.course}}</p>
-       <p>{{post.semester}}</p>
-        <p>{{post.cycle}}</p>
-      <h6>Posted on: {{ new Date(post.blogDate).toLocaleString("en-us", { dateStyle: "long" }) }}</h6>
+      <h3>{{ post.title }}</h3>
+      <p>Course: {{post.course}}</p>
+       <p>Semester: {{post.semester}}</p>
+        <p>Cycle: {{post.cycle}}</p>
+      <p>Posted on: {{ new Date(post.blogDate).toLocaleString("en-us", { dateStyle: "long" }) }}</p>
       <router-link class="link" :to="{ name: 'ViewBlog', params: { blogid: this.post.blogID } }">
         View The Post <Arrow class="arrow" />
       </router-link>

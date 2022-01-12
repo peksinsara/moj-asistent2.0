@@ -1,13 +1,13 @@
 <template>
   <div class="post-view" v-if="currentBlog">
     <div class="container quillWrapper">
-      <h2>{{ this.currentBlog[0].blogTitle }}</h2>
+      <h2>{{ this.currentBlog[0].title }}</h2>
       <p>{{this.currentBlog[0].course}}</p>
       <p>{{this.currentBlog[0].semester}}</p>
       <p>{{this.currentBlog[0].cycle}}</p>
       <h4>Posted on: {{ new Date(this.currentBlog[0].blogDate).toLocaleString("en-us", { dateStyle: "long" }) }}</h4>
-      <img :src="this.currentBlog[0].blogCoverPhoto" alt="" />
-      <div class="post-content ql-editor" v-html="this.currentBlog[0].blogHTML"></div>
+      <img :src="this.currentBlog[0]" alt="" />
+      <div class="post-content ql-editor" v-html="this.currentBlog[0].description"></div>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
     };
   },
   async mounted() {
-    this.currentBlog = await this.$store.state.blogPosts.filter((post) => {
+    this.currentBlog = await this.$store.state.news.filter((post) => {
       return post.blogID === this.$route.params.blogid;
     });
   },

@@ -8,10 +8,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    blogPosts: [],
+    news: [],
     postLoaded: null,
-    blogHTML: "Write your blog title here...",
-    blogTitle: "",
+    description: "Write your blog title here...",
+    title: "",
     course:"",
     semester:"",
     cycle:"",
@@ -26,23 +26,23 @@ export default new Vuex.Store({
     profileFirstName: null,
     profileLastName: null,
     profileUsername: null,
-    profileId: null,
+    authorName: null,
     profileInitials: null,
   },
   getters: {
-    blogPostsFeed(state) {
-      return state.blogPosts.slice(0, 2);
+    newsFeed(state) {
+      return state.news.slice(0, 2);
     },
-    blogPostsCards(state) {
-      return state.blogPosts.slice(2, 6);
+    newsCards(state) {
+      return state.news.slice(2, 6);
     },
   },
   mutations: {
     newBlogPost(state, payload) {
-      state.blogHTML = payload;
+      state.description = payload;
     },
-    updateBlogTitle(state, payload) {
-      state.blogTitle = payload;
+    updatetitle(state, payload) {
+      state.title = payload;
     },
     updateCourse(state, payload) {
       state.course = payload;
@@ -66,17 +66,15 @@ export default new Vuex.Store({
       state.editPost = payload;
     },
     setBlogState(state, payload) {
-      state.blogTitle = payload.blogTitle;
+      state.title = payload.title;
       state.course = payload.course;
       state.email = payload.email;
       state.semester = payload.semester;
       state.cycle = payload.cycle;
-      state.blogHTML = payload.blogHTML;
-      state.blogPhotoFileURL = payload.blogCoverPhoto;
-      state.blogPhotoName = payload.blogCoverPhotoName;
+      state.description = payload.description;
     },
     filterBlogPost(state, payload) {
-      state.blogPosts = state.blogPosts.filter((post) => post.blogID !== payload);
+      state.news = state.news.filter((post) => post.blogID !== payload);
     },
     updateUser(state, payload) {
       state.user = payload;
@@ -86,14 +84,14 @@ export default new Vuex.Store({
       console.log(state.profileAdmin);
     },
     setProfileInfo(state, doc) {
-      state.profileId = doc.id;
+      state.authorName = doc.id;
       state.profileEmail = doc.data().email;
       state.profileFullName = doc.data().fullName;
       state.profileCycle = doc.data().cycle;
       state.profileDepartment= doc.data().department;
       state.profileSemester= doc.data().semester;
       state.profileStudentID= doc.data().studentID;
-      console.log(state.profileId);
+      console.log(state.authorName);
     },
     setProfileInitials(state) {
       state.profileInitials =
@@ -126,23 +124,22 @@ export default new Vuex.Store({
       commit("setProfileAdmin", admin);
     },
     async getPost({ state }) {
-      const dataBase = await db.collection("blogPosts").orderBy("date", "desc");
+      const dataBase = await db.collection("news").orderBy("date", "desc");
       const dbResults = await dataBase.get();
       dbResults.forEach((doc) => {
-        if (!state.blogPosts.some((post) => post.blogID === doc.id)) {
+        if (!state.news.some((post) => post.blogID === doc.id)) {
           const data = {
             blogID: doc.data().blogID,
-            blogHTML: doc.data().blogHTML,
-            blogCoverPhoto: doc.data().blogCoverPhoto,
-            blogTitle: doc.data().blogTitle,
+            description: doc.data().description,
+           
+            title: doc.data().title,
             course: doc.data().course,
             semester: doc.data().semester,
             cycle: doc.data().cycle,
             department: doc.data().department,
             blogDate: doc.data().date,
-            blogCoverPhotoName: doc.data().blogCoverPhotoName,
           };
-          state.blogPosts.push(data);
+          state.news.push(data);
         }
       });
       state.postLoaded = true;
@@ -152,12 +149,12 @@ export default new Vuex.Store({
       await dispatch("getPost");
     },
     async deletePost({ commit }, payload) {
-      const getPost = await db.collection("blogPosts").doc(payload);
+      const getPost = await db.collection("news").doc(payload);
       await getPost.delete();
       commit("filterBlogPost", payload);
     },
     async updateUserSettings({ commit, state }) {
-      const dataBase = await db.collection("users").doc(state.profileId);
+      const dataBase = await db.collection("users").doc(state.authorName);
       await dataBase.update({
         fullName: state.profileFirstName,
         cycle: state.profileCycle,

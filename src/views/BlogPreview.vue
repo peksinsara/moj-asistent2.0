@@ -1,12 +1,12 @@
 <template>
   <div class="post-view">
     <div class="container quillWrapper">
-      <h2>{{ this.blogTitle }}</h2>
+      <h2>{{ this.title }}</h2>
       <p>{{this.course}}</p>
       <p>{{this.cycle}}</p>
       <p>{{this.semester}}</p>
-      <img :src="blogCoverPhoto" alt="" />
-      <div class="post-content ql-editor" v-html="blogHTML"></div>
+     
+      <div class="post-content ql-editor" v-html="description"></div>
     </div>
   </div>
 </template>
@@ -15,8 +15,8 @@
 export default {
   name: "PostPreview",
   computed: {
-    blogTitle() {
-      return this.$store.state.blogTitle;
+    title() {
+      return this.$store.state.title;
     },
     course() {
       return this.$store.state.course;
@@ -27,12 +27,10 @@ export default {
     cycle() {
       return this.$store.state.cycle;
     },
-    blogHTML() {
-      return this.$store.state.blogHTML;
+    description() {
+      return this.$store.state.description;
     },
-    blogCoverPhoto() {
-      return this.$store.state.blogPhotoFileURL;
-    },
+    
   },
 };
 </script>

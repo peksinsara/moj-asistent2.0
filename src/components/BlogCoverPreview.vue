@@ -2,7 +2,7 @@
   <div class="modal" ref="modal">
     <div class="modal-content">
       <close @click="closePreview" class="icon" />
-      <img :src="this.blogCoverPhoto" alt="" />
+     
     </div>
   </div>
 </template>
@@ -19,9 +19,7 @@ export default {
     },
   },
   computed: {
-    blogCoverPhoto() {
-      return this.$store.state.blogPhotoFileURL;
-    },
+   
   },
 };
 </script>

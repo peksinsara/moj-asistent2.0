@@ -7,7 +7,7 @@
         <p><span>Error:</span>{{ this.errorMsg }}</p>
       </div>
       <div class="blog-info">
-        <input type="text" placeholder="Enter Blog Title" v-model="blogTitle" />
+        <input type="text" placeholder="Enter Blog Title" v-model="title" />
                 <input type="text" placeholder="Enter Course" v-model="course" />
                 <input type="number" placeholder="semster" v-model="semester" />
                 <input type="number" placeholder="cycle" v-model="cycle" />
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="editor">
-        <vue-editor :editorOptions="editorSettings" v-model="blogHTML" useCustomImageHandler @image-added="imageHandler" />
+        <vue-editor :editorOptions="editorSettings" v-model="description" useCustomImageHandler @image-added="imageHandler" />
       </div>
       <div class="blog-actions">
         <button @click="uploadBlog">Publish Blog</button>
@@ -85,15 +85,14 @@ export default {
           console.log(err);
         },
         async () => {
-          const downloadURL = await docRef.getDownloadURL();
-          Editor.insertEmbed(cursorLocation, "image", downloadURL);
+ 
           resetUploader();
         }
       );
     },
 
     uploadBlog() {
-      if (this.blogTitle.length !== 0 && this.blogHTML.length !== 0) {
+      if (this.title.length !== 0 && this.description.length !== 0) {
         if (this.file) {
           this.loading = true;
           const storageRef = firebase.storage().ref();
@@ -108,20 +107,18 @@ export default {
               this.loading = false;
             },
             async () => {
-              const downloadURL = await docRef.getDownloadURL();
+           
               const timestamp = await Date.now();
-              const dataBase = await db.collection("blogPosts").doc();
+              const dataBase = await db.collection("news").doc();
 
               await dataBase.set({
                 blogID: dataBase.id,
                 course:this.course,
                 semester:this.semester,
                 cycle:this.cycle,
-                blogHTML: this.blogHTML,
-                blogCoverPhoto: downloadURL,
-                blogCoverPhotoName: this.blogCoverPhotoName,
-                blogTitle: this.blogTitle,
-                profileId: this.profileId,
+                description: this.description,
+                title: this.title,
+                authorName: this.authorName,
                 date: timestamp,
               });
               await this.$store.dispatch("getPost");
@@ -147,18 +144,15 @@ export default {
     },
   },
   computed: {
-    profileId() {
-      return this.$store.state.profileId;
+    authorName() {
+      return this.$store.state.authorName;
     },
-    blogCoverPhotoName() {
-      return this.$store.state.blogPhotoName;
-    },
-    blogTitle: {
+    title: {
       get() {
-        return this.$store.state.blogTitle;
+        return this.$store.state.title;
       },
       set(payload) {
-        this.$store.commit("updateBlogTitle", payload);
+        this.$store.commit("updatetitle", payload);
       },
     },
      cycle: {
@@ -185,9 +179,9 @@ export default {
         this.$store.commit("updateCourse", payload);
       },
     },
-    blogHTML: {
+    description: {
       get() {
-        return this.$store.state.blogHTML;
+        return this.$store.state.description;
       },
       set(payload) {
         this.$store.commit("newBlogPost", payload);

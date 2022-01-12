@@ -7,8 +7,8 @@
       <div class="nav-links">
         <ul v-show="!mobile">
           <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
-          <router-link v-if="user" class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
-          <router-link v-if="admin" class="link" :to="{ name: 'CreatePost' }">Create Post</router-link>
+          <router-link v-if="user" class="link" :to="{ name: 'Blogs' }">News</router-link>
+          <router-link v-if="admin" class="link" :to="{ name: 'CreatePost' }">Create News</router-link>
           <router-link v-if="!user" class="link" :to="{ name: 'Login' }">Login/Register</router-link>
         </ul>
         <div v-if="user" :class="{ 'mobile-user-menu': mobile }" @click="toggleProfileMenu" class="profile" ref="profile">

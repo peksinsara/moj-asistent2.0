@@ -5,7 +5,7 @@
         <span>Toggle Editing Post</span>
         <input type="checkbox" v-model="editPost" />
       </div>
-      <BlogCard :post="post" v-for="(post, index) in blogPosts" :key="index" />
+      <BlogCard :post="post" v-for="(post, index) in news" :key="index" />
     </div>
   </div>
 </template>
@@ -16,8 +16,8 @@ export default {
   name: "blogs",
   components: { BlogCard },
   computed: {
-    blogPosts() {
-      return this.$store.state.blogPosts;
+    news() {
+      return this.$store.state.news;
     },
     editPost: {
       get() {
