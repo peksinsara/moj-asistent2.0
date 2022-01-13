@@ -52,7 +52,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(() => {
-          this.$router.push({ name: "Home" });
+          this.$router.push({ name: "Employees" });
           this.error = false;
           this.errorMsg = "";
           console.log(firebase.auth().currentUser.uid);

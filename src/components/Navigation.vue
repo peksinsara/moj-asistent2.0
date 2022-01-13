@@ -2,11 +2,11 @@
   <header>
     <nav class="container">
       <div class="branding">
-        <router-link class="header" :to="{ name: 'Home' }">Moj Asistent</router-link>
+        <router-link class="header" :to="{ name: 'Employees' }">Moj Asistent</router-link>
       </div>
       <div class="nav-links">
         <ul v-show="!mobile">
-          <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
+          <router-link v-if="user"  class="link" :to="{ name: 'Employees' }">Employees</router-link>
           <router-link v-if="user" class="link" :to="{ name: 'Blogs' }">News</router-link>
           <router-link v-if="admin" class="link" :to="{ name: 'CreatePost' }">Create News</router-link>
           <router-link v-if="!user" class="link" :to="{ name: 'Login' }">Login/Register</router-link>
@@ -17,8 +17,12 @@
             <div class="info">
               <p class="initials">{{ this.$store.state.profileInitials }}</p>
               <div class="right">
-                <p>{{ this.$store.state.profileFullName }}</p>
-                <p>{{ this.$store.state.profileStudentID}}</p>
+                <p>Full Name: {{ this.$store.state.profileFullName }}</p>
+                <p>Student ID: {{ this.$store.state.profileStudentID}}</p>
+                 <p>Course: {{ this.$store.state.profileCourse}}</p>
+                  <p>Semester: {{ this.$store.state.profileSemester}}</p>
+                   <p>Cycle: {{ this.$store.state.profileCycle}}</p>
+                <p>Email: {{ this.$store.state.profileEmail}}</p>
                 
               </div>
             </div>
@@ -47,7 +51,7 @@
     <menuIcon @click="toggleMobileNav" class="menu-icon" v-show="mobile" />
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
-        <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
+        <router-link class="link" :to="{ name: 'Employees' }">Employees</router-link>
         <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
         <router-link v-if="admin" class="link" :to="{ name: 'CreatePost' }">Create Post</router-link>
         <router-link v-if="!user" class="link" :to="{ name: 'Login' }">Login/Register</router-link>
@@ -194,7 +198,7 @@ header {
           position: absolute;
           top: 60px;
           right: 0;
-          width: 250px;
+          width: 300px;
           background-color: #303030;
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
@@ -220,14 +224,11 @@ header {
               flex: 1;
               margin-left: 24px;
 
-              p:nth-child(1) {
+              p {
                 font-size: 14px;
               }
 
-              p:nth-child(2),
-              p:nth-child(3) {
-                font-size: 12px;
-              }
+            
             }
           }
 

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Employees from "../views/Employees.vue";
 import Blogs from "../views/Blogs.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
@@ -18,11 +18,11 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: "/employees",
+    name: "Employees",
+    component: Employees,
     meta: {
-      title: "Home",
+      title: "Employees",
       requiresAuth: false,
     },
   },
@@ -149,11 +149,11 @@ router.beforeEach(async (to, from, next) => {
         if (admin) {
           return next();
         }
-        return next({ name: "Home" });
+        return next({ name: "Employees" });
       }
       return next();
     }
-    return next({ name: "Home" });
+    return next({ name: "Employees" });
   }
   return next();
 });

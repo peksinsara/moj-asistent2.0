@@ -96,7 +96,7 @@ export default {
           studentID: this.studentID,
           semester: this.semester,
         });
-        this.$router.push({ name: "Home" });
+        this.$router.push({ name: "Employees" });
         return;
       }
       this.error = true;
