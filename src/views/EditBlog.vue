@@ -57,7 +57,7 @@ export default {
     this.currentBlog = await this.$store.state.news.filter((post) => {
       return post.blogID === this.routeID;
     });
-    this.$store.commit("setBlogState", this.currentBlog[0]);
+    this.$store.commit("setNewsState", this.currentBlog[0]);
   },
   methods: {
     fileChange() {

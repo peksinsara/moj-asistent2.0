@@ -10,7 +10,7 @@ export default new Vuex.Store({
   state: {
     news: [],
     postLoaded: null,
-    description: "Write your blog title here...",
+    description: "Write your news content here...",
     title: "",
     course:"",
     semester:"",
@@ -65,7 +65,7 @@ export default new Vuex.Store({
     toggleEditPost(state, payload) {
       state.editPost = payload;
     },
-    setBlogState(state, payload) {
+    setNewsState(state, payload) {
       state.title = payload.title;
       state.course = payload.course;
       state.email = payload.email;
@@ -73,7 +73,7 @@ export default new Vuex.Store({
       state.cycle = payload.cycle;
       state.description = payload.description;
     },
-    filterBlogPost(state, payload) {
+    filterNewsPost(state, payload) {
       state.news = state.news.filter((post) => post.blogID !== payload);
     },
     updateUser(state, payload) {

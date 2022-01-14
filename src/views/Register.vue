@@ -5,7 +5,7 @@
         Already have an account?
         <router-link class="router-link" :to="{ name: 'Login' }">Login</router-link>
       </p>
-      <h2>Create Your FireBlog Account</h2>
+      <h2>Create Your New Account</h2>
       <div class="inputs">
         <div class="input">
           <input type="text" placeholder="Full Name" v-model="fullName" />
@@ -111,6 +111,7 @@ export default {
 .register {
   h2 {
     max-width: 350px;
+    line-height: 30px;
   }
 }
 </style>

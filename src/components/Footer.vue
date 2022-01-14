@@ -21,15 +21,15 @@
         </div>
         <div class="col-2">
           <ul>
-            <router-link class="link" :to="{ name: 'employees' }">employees</router-link>
-            <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
+            <router-link class="link" :to="{ name: 'Employees' }">employees</router-link>
+            <router-link class="link" :to="{ name: 'News' }">News</router-link>
             <router-link v-if="admin" class="link" :to="{ name: 'CreatePost' }">Create Post</router-link>
             <router-link v-if="!user" class="link" :to="{ name: 'Login' }">Login In / Register</router-link>
           </ul>
         </div>
       </div>
       <div class="right">
-        <p>Copyright 2021 All Rights Reserved</p>
+        <p>Copyright 2022 All Rights Reserved</p>
       </div>
     </div>
   </footer>
@@ -63,10 +63,11 @@ export default {
 footer {
   margin-top: auto;
   padding: 100px 25px;
-  background-color: #303030;
+  background-color: #006270;
   .container {
     display: flex;
     flex-direction: column;
+    
     gap: 32px;
     @media (min-width: 800px) {
       flex-direction: row;

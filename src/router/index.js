@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Employees from "../views/Employees.vue";
-import Blogs from "../views/Blogs.vue";
+import News from "../views/News.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import ForgotPassword from "../views/ForgotPassword.vue";
@@ -27,11 +27,11 @@ const routes = [
     },
   },
   {
-    path: "/blogs",
-    name: "Blogs",
-    component: Blogs,
+    path: "/news",
+    name: "News",
+    component: News,
     meta: {
-      title: "Blogs",
+      title: "News",
       requiresAuth: true,
     },
   },

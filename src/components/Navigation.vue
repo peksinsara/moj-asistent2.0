@@ -7,7 +7,7 @@
       <div class="nav-links">
         <ul v-show="!mobile">
           <router-link v-if="user"  class="link" :to="{ name: 'Employees' }">Employees</router-link>
-          <router-link v-if="user" class="link" :to="{ name: 'Blogs' }">News</router-link>
+          <router-link v-if="user" class="link" :to="{ name: 'News' }">News</router-link>
           <router-link v-if="admin" class="link" :to="{ name: 'CreatePost' }">Create News</router-link>
           <router-link v-if="!user" class="link" :to="{ name: 'Login' }">Login/Register</router-link>
         </ul>
@@ -52,7 +52,7 @@
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
         <router-link class="link" :to="{ name: 'Employees' }">Employees</router-link>
-        <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
+        <router-link class="link" :to="{ name: 'News' }">News</router-link>
         <router-link v-if="admin" class="link" :to="{ name: 'CreatePost' }">Create Post</router-link>
         <router-link v-if="!user" class="link" :to="{ name: 'Login' }">Login/Register</router-link>
       </ul>
@@ -128,7 +128,7 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  background-color: #fff;
+  background-color: #006270;
   padding: 0 25px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   z-index: 99;
@@ -137,6 +137,7 @@ header {
     font-weight: 500;
     padding: 0 8px;
     transition: 0.3s color ease;
+    color:white;
 
     &:hover {
       color: #1eb8b8;
@@ -154,7 +155,7 @@ header {
       .header {
         font-weight: 600;
         font-size: 24px;
-        color: #000;
+        color: white;
         text-decoration: none;
       }
     }
@@ -187,8 +188,8 @@ header {
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        color: #fff;
-        background-color: #303030;
+        color: black;
+        background-color: #00E0C7;
 
         span {
           pointer-events: none;
@@ -199,21 +200,23 @@ header {
           top: 60px;
           right: 0;
           width: 300px;
-          background-color: #303030;
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          background-color: #006270;
+
+          box-shadow: 2px 1px 8px -1px rgba(0, 0, 0, 0.8), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
 
           .info {
             display: flex;
             align-items: center;
             padding: 15px;
+            color:white;
             border-bottom: 1px solid #fff;
 
             .initials {
               position: initial;
               width: 40px;
               height: 40px;
-              background-color: #fff;
-              color: #303030;
+              color: black;
+              background-color: #00E0C7;
               display: flex;
               align-items: center;
               justify-content: center;
@@ -270,6 +273,7 @@ header {
     top: 32px;
     right: 25px;
     height: 25px;
+    color:white;
     width: auto;
   }
 
@@ -281,12 +285,16 @@ header {
     flex-direction: column;
     position: fixed;
     height: 100%;
-    background-color: #303030;
+    background-color: #006270;
+    border-right: 1px solid black;
     top: 0;
     left: 0;
 
     .link {
       padding: 15px 0;
+      color: #fff;
+    }
+    a.link{
       color: #fff;
     }
   }

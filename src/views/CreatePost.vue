@@ -7,10 +7,10 @@
         <p><span>Error:</span>{{ this.errorMsg }}</p>
       </div>
       <div class="blog-info">
-        <input type="text" placeholder="Enter Blog Title" v-model="title" />
+        <input type="text" placeholder="Enter News Title" v-model="title" />
                 <input type="text" placeholder="Enter Course" v-model="course" />
-                <input type="number" placeholder="semster" v-model="semester" />
-                <input type="number" placeholder="cycle" v-model="cycle" />
+                <input type="number" placeholder="Semster" v-model="semester" />
+                <input type="number" placeholder="Cycle" v-model="cycle" />
 
         <div class="upload-file">
           <label for="blog-photo">Upload Cover Photo</label>
@@ -198,6 +198,7 @@ export default {
 
   button {
     margin-top: 0;
+    background-color: #00E0C7;
   }
 
   .router-button {
@@ -215,7 +216,7 @@ export default {
     border-radius: 20px;
     padding: 12px 24px;
     color: #fff;
-    background-color: #303030;
+    background-color: #00E0C7;
     text-decoration: none;
 
     &:hover {
@@ -278,14 +279,19 @@ export default {
       margin-left: 16px;
       position: relative;
       display: flex;
+      
 
       input {
         display: none;
+      }
+      a.router-button{
+        background-color: #00E0C7;
       }
 
       .preview {
         margin-left: 16px;
         text-transform: initial;
+        background-color: #00E0C7;
       }
 
       span {
@@ -325,6 +331,7 @@ export default {
 
     button {
       margin-right: 16px;
+      background-color: #00E0C7;
     }
   }
 }

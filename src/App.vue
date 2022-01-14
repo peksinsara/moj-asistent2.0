@@ -100,7 +100,7 @@ button,
   cursor: pointer;
   margin-top: 24px;
   padding: 12px 24px;
-  background-color: #303030;
+  background-color: #00E0C7;
   color: #fff;
   border-radius: 20px;
   border: none;

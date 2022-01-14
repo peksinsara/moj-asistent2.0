@@ -13,7 +13,7 @@
 <script>
 import BlogCard from "../components/BlogCard";
 export default {
-  name: "blogs",
+  name: "News",
   components: { BlogCard },
   computed: {
     news() {

@@ -128,7 +128,7 @@ export default {
       border-radius: 8px;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       padding: 32px;
-      background-color: #f1f1f1;
+      background-color: rgba(0, 97, 112, 0.158);
       display: flex;
       flex-direction: column;
       max-width: 600px;
@@ -139,8 +139,8 @@ export default {
         width: 80px;
         height: 80px;
         font-size: 32px;
-        background-color: #303030;
-        color: #fff;
+        background-color: #00E0C7;
+        color: black;
         display: flex;
         align-self: center;
         align-items: center;
@@ -155,7 +155,7 @@ export default {
         font-size: 14px;
         padding: 8px 24px;
         border-radius: 8px;
-        background-color: #303030;
+        background-color: #00E0C7;
         margin: 16px 0;
         text-align: center;
         text-transform: capitalize;
@@ -192,6 +192,7 @@ export default {
 
       button {
         align-self: center;
+        background-color: #00E0C7;
       }
     }
   }
