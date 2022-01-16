@@ -130,8 +130,7 @@ export default new Vuex.Store({
         if (!state.news.some((post) => post.blogID === doc.id)) {
           const data = {
             blogID: doc.data().blogID,
-            description: doc.data().description,
-           
+            description: doc.data().description,           
             title: doc.data().title,
             course: doc.data().course,
             semester: doc.data().semester,

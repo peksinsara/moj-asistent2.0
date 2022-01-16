@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Employees from "../views/Employees.vue";
 import News from "../views/News.vue";
 import Login from "../views/Login.vue";
+import Classes from "../views/Classes.vue";
 import Register from "../views/Register.vue";
 import ForgotPassword from "../views/ForgotPassword.vue";
 import Profile from "../views/Profile.vue";
@@ -23,7 +24,7 @@ const routes = [
     component: Employees,
     meta: {
       title: "Employees",
-      requiresAuth: false,
+      requiresAuth: true,
     },
   },
   {
@@ -68,6 +69,15 @@ const routes = [
     component: Profile,
     meta: {
       title: "Profile",
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/classes",
+    name: "Classes",
+    component: Classes,
+    meta: {
+      title: "Classes",
       requiresAuth: true,
     },
   },

@@ -1,4 +1,6 @@
 <template>
+<div>
+   
   <div class="blog-card-wrap">
     <div class="blog-cards container">
       <div v-if="profileAdmin" class="toggle-edit">
@@ -7,6 +9,7 @@
       </div>
       <BlogCard :post="post" v-for="(post, index) in news" :key="index" />
     </div>
+  </div>
   </div>
 </template>
 

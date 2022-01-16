@@ -10,6 +10,7 @@ Vue.use(Vue2Editor);
 
 Vue.config.productionTip = false;
 
+
 let app;
 firebase.auth().onAuthStateChanged(() => {
   if (!app) {
